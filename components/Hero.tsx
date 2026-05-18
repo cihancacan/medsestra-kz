@@ -4,60 +4,68 @@ const quickServices = ['Укол на дому', 'Перевязка', 'Family C
 
 export function Hero() {
   return (
-    <section className="bg-[#F6F4EF] pt-20">
-      <div className="mx-auto grid min-h-[calc(100vh-5rem)] max-w-[1440px] gap-0 lg:grid-cols-[0.42fr_0.58fr]">
-        <div className="order-2 flex items-center px-5 py-10 md:px-8 lg:order-1 lg:py-16 xl:px-14">
-          <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand-ink/10 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-ink/55">
-              <span className="h-2 w-2 rounded-full bg-brand-blue" />
-              Almaty · Private medical concierge
-            </div>
+    <section className="relative overflow-hidden bg-white pt-20">
+      <div className="absolute inset-x-0 top-0 h-[72%] bg-gradient-to-b from-[#EAF6FB] to-white" />
+      <div className="relative mx-auto grid max-w-7xl gap-8 px-5 py-10 md:px-8 lg:min-h-[calc(100vh-5rem)] lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:py-16">
+        <div className="relative z-10">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-[#1677A8] shadow-sm ring-1 ring-[#D7EEF7]">
+            <span className="h-2 w-2 rounded-full bg-[#23A6D5]" />
+            Nurse care in Almaty
+          </div>
+          <h1 className="mt-7 max-w-3xl text-[3.3rem] font-black leading-[0.92] tracking-[-0.075em] text-[#071827] md:text-7xl lg:text-[5.4rem]">
+            Уход на дому, как удобный сервис
+          </h1>
+          <p className="mt-4 text-base font-medium text-[#071827]/45">Ukhod na domu, kak udobnyy servis</p>
+          <p className="mt-7 max-w-xl text-lg leading-8 text-[#071827]/68 md:text-xl md:leading-9">
+            Медсестра на дом, Family Care, Corporate Care и Beauty IV. Выберите услугу, напишите в WhatsApp или позвоните — мы организуем визит.
+          </p>
 
-            <h1 className="mt-7 text-[3.15rem] font-semibold leading-[0.96] tracking-[-0.065em] text-brand-ink md:text-6xl xl:text-7xl">
-              Медсестра на дом в Алматы
-            </h1>
-            <p className="mt-4 text-base text-brand-ink/45">Medsestra na dom v Almaty</p>
-            <p className="mt-7 text-lg leading-8 text-brand-ink/68 md:text-xl md:leading-9">
-              Уход на дому, Family Care, Corporate Care и Beauty & Wellness IV. Один номер для звонка, WhatsApp и сопровождения заявки.
-            </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href={`https://wa.me/${site.whatsapp}`} className="rounded-2xl bg-[#071827] px-7 py-4 text-center font-bold text-white shadow-xl transition hover:-translate-y-0.5">
+              Написать в WhatsApp
+            </a>
+            <a href={site.phoneHref} className="rounded-2xl bg-white px-7 py-4 text-center font-bold text-[#071827] shadow-sm ring-1 ring-[#DDE8EE] transition hover:-translate-y-0.5">
+              {site.phone}
+            </a>
+          </div>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href={`https://wa.me/${site.whatsapp}`} className="rounded-full bg-brand-ink px-8 py-4 text-center font-semibold text-white shadow-premium transition hover:-translate-y-0.5">
-                WhatsApp
+          <div className="mt-8 grid max-w-xl gap-3 rounded-[2rem] bg-white p-3 shadow-xl ring-1 ring-[#E2EEF4] sm:grid-cols-2">
+            {quickServices.map((service) => (
+              <a key={service} href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Здравствуйте, хочу записаться: ${service}`)}`} className="rounded-2xl bg-[#F5FBFE] px-4 py-4 text-sm font-bold text-[#071827] transition hover:bg-[#EAF6FB]">
+                {service}
               </a>
-              <a href={site.phoneHref} className="rounded-full border border-brand-ink/12 bg-white px-8 py-4 text-center font-semibold text-brand-ink shadow-sm transition hover:-translate-y-0.5">
-                {site.phone}
-              </a>
-            </div>
-
-            <div className="mt-8 rounded-[1.5rem] border border-brand-ink/8 bg-white p-4 shadow-sm md:p-5">
-              <p className="text-sm font-semibold text-brand-ink">Быстрый выбор услуги</p>
-              <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                {quickServices.map((service) => (
-                  <a key={service} href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Здравствуйте, хочу записаться: ${service}`)}`} className="rounded-2xl bg-[#F6F4EF] px-4 py-3 text-sm font-semibold text-brand-ink transition hover:bg-brand-soft">
-                    {service}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-6 flex flex-wrap gap-3 text-sm font-semibold text-brand-ink/62">
-              <span className="rounded-full bg-white px-4 py-2">RU / KZ / EN</span>
-              <span className="rounded-full bg-white px-4 py-2">Kaspi Pay</span>
-              <a className="rounded-full bg-white px-4 py-2" href={site.emailHref}>{site.email}</a>
-            </div>
+            ))}
           </div>
         </div>
 
-        <div className="order-1 min-h-[58vh] overflow-hidden lg:order-2 lg:min-h-[calc(100vh-5rem)]">
-          <picture>
-            <source media="(max-width: 768px)" srcSet={imageFiles.home.mobile} />
-            <img
-              src={imageFiles.home.desktop}
-              alt="Medsestra.kz — premium nurse at home in Almaty"
-              className="h-full w-full object-cover object-[50%_18%] md:object-[70%_50%] lg:object-right"
-            />
-          </picture>
+        <div className="relative z-10">
+          <div className="relative overflow-hidden rounded-[2.4rem] bg-[#071827] shadow-2xl">
+            <picture>
+              <source media="(max-width: 768px)" srcSet={imageFiles.home.mobile} />
+              <img
+                src={imageFiles.home.desktop}
+                alt="Medsestra.kz — nurse care at home in Almaty"
+                className="h-[560px] w-full object-cover object-[50%_18%] md:h-[720px] md:object-[70%_50%] lg:object-right"
+              />
+            </picture>
+            <div className="absolute bottom-5 left-5 right-5 grid gap-3 md:grid-cols-3">
+              <div className="rounded-2xl bg-white/92 p-4 backdrop-blur">
+                <p className="text-xl font-black text-[#071827]">RU/KZ/EN</p>
+                <p className="text-xs font-semibold text-[#071827]/50">языки</p>
+              </div>
+              <div className="rounded-2xl bg-white/92 p-4 backdrop-blur">
+                <p className="text-xl font-black text-[#071827]">Kaspi</p>
+                <p className="text-xs font-semibold text-[#071827]/50">оплата</p>
+              </div>
+              <div className="rounded-2xl bg-white/92 p-4 backdrop-blur">
+                <p className="text-xl font-black text-[#071827]">Almaty</p>
+                <p className="text-xs font-semibold text-[#071827]/50">выезд</p>
+              </div>
+            </div>
+          </div>
+          <a href={site.emailHref} className="mt-4 inline-flex rounded-full bg-white px-5 py-3 text-sm font-bold text-[#071827] shadow-sm ring-1 ring-[#DDE8EE]">
+            {site.email}
+          </a>
         </div>
       </div>
     </section>
