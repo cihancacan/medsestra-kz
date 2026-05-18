@@ -7,7 +7,7 @@ export function PillarCard({ pillar }: { pillar: Pillar }) {
     <a href={pillar.href} className="group overflow-hidden rounded-[2rem] bg-white shadow-premium transition hover:-translate-y-1">
       <picture>
         <source media="(max-width: 768px)" srcSet={pillar.image.mobile} />
-        <img src={pillar.image.desktop} alt={pillar.eyebrow} className="h-72 w-full object-cover transition duration-700 group-hover:scale-105" />
+        <img src={pillar.image.desktop} alt={pillar.eyebrow} className="h-72 w-full object-cover object-left transition duration-700 group-hover:scale-105 md:object-left" />
       </picture>
       <div className="p-7">
         <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-blue">{pillar.title}</p>
