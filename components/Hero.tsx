@@ -17,7 +17,7 @@ export function Hero() {
       <div className="absolute left-[-90px] top-20 h-[420px] w-[420px] rounded-full bg-[#BDEBFF]/24 blur-3xl" />
       <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white to-transparent" />
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-5rem)] max-w-7xl flex-col px-5 pb-8 pt-4 md:flex md:items-center md:px-8 md:py-12 lg:py-16">
+      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-5rem)] max-w-7xl flex-col px-5 pb-8 pt-4 md:items-start md:justify-center md:px-8 md:py-12 lg:py-16">
         <div className="max-w-2xl md:w-full md:pt-0">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#1677A8] shadow-sm ring-1 ring-[#D7EEF7] backdrop-blur md:px-4 md:py-2 md:text-xs md:tracking-[0.16em]">
             <span className="h-2 w-2 rounded-full bg-[#23A6D5]" />
