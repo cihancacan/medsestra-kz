@@ -39,29 +39,15 @@ export function Hero() {
         </div>
 
         <div className="relative z-10">
-          <div className="relative overflow-hidden rounded-[2.4rem] bg-[#071827] shadow-2xl">
+          <div className="relative overflow-hidden rounded-[2.4rem] bg-[#F5FBFE] shadow-2xl ring-1 ring-[#DDE8EE]">
             <picture>
               <source media="(max-width: 768px)" srcSet={imageFiles.home.mobile} />
               <img
                 src={imageFiles.home.desktop}
                 alt="Medsestra.kz — nurse care at home in Almaty"
-                className="h-[560px] w-full object-cover object-[50%_18%] md:h-[720px] md:object-[70%_50%] lg:object-right"
+                className="h-auto w-full object-contain"
               />
             </picture>
-            <div className="absolute bottom-5 left-5 right-5 grid gap-3 md:grid-cols-3">
-              <div className="rounded-2xl bg-white/92 p-4 backdrop-blur">
-                <p className="text-xl font-black text-[#071827]">RU/KZ/EN</p>
-                <p className="text-xs font-semibold text-[#071827]/50">языки</p>
-              </div>
-              <div className="rounded-2xl bg-white/92 p-4 backdrop-blur">
-                <p className="text-xl font-black text-[#071827]">Kaspi</p>
-                <p className="text-xs font-semibold text-[#071827]/50">оплата</p>
-              </div>
-              <div className="rounded-2xl bg-white/92 p-4 backdrop-blur">
-                <p className="text-xl font-black text-[#071827]">Almaty</p>
-                <p className="text-xs font-semibold text-[#071827]/50">выезд</p>
-              </div>
-            </div>
           </div>
           <a href={site.emailHref} className="mt-4 inline-flex rounded-full bg-white px-5 py-3 text-sm font-bold text-[#071827] shadow-sm ring-1 ring-[#DDE8EE]">
             {site.email}
