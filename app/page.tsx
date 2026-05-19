@@ -48,10 +48,10 @@ export default function HomePage() {
 
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {pillars.map((pillar, index) => (
-              <a key={pillar.key} href={pillar.href} className={`group overflow-hidden rounded-[2.2rem] bg-white shadow-sm ring-1 ring-[#DDE8EE] transition hover:-translate-y-1 hover:shadow-2xl ${index > 0 ? 'mt-8 md:mt-0' : ''}`}>
+              <a key={pillar.key} href={pillar.href} className="group overflow-hidden rounded-[2.2rem] bg-white shadow-sm ring-1 ring-[#DDE8EE] transition hover:-translate-y-1 hover:shadow-2xl">
                 <picture>
                   <source media="(max-width: 768px)" srcSet={pillar.image.mobile} />
-                  <img src={pillar.image.desktop} alt={pillar.eyebrow} className="h-72 w-full object-cover object-right transition duration-700 group-hover:scale-105" />
+                  <img src={pillar.image.desktop} alt={pillar.eyebrow} className={`h-72 w-full object-cover transition duration-700 group-hover:scale-105 ${index > 0 ? 'object-[right_66%] md:object-right' : 'object-right'}`} />
                 </picture>
                 <div className="p-6">
                   <p className="text-xs font-black uppercase tracking-[0.18em] text-[#1677A8]">{pillar.title}</p>
