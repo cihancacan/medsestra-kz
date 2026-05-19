@@ -22,7 +22,7 @@ export default function ServicesPage() {
             <section id={sectionId(pillar.key)} key={pillar.key} className="grid gap-8 rounded-[2rem] bg-white p-6 shadow-premium md:grid-cols-2 md:p-10">
               <picture className={index % 2 === 1 ? 'md:order-2' : ''}>
                 <source media="(max-width: 768px)" srcSet={pillar.image.mobile} />
-                <img src={pillar.image.desktop} alt={pillar.eyebrow} className="h-full min-h-[420px] w-full rounded-[1.5rem] object-cover" />
+                <img src={pillar.image.desktop} alt={pillar.eyebrow} className="h-full min-h-[420px] w-full rounded-[1.5rem] object-cover object-right" />
               </picture>
               <div className="flex flex-col justify-center">
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-blue">{pillar.title}</p>
