@@ -12,27 +12,27 @@ export function Hero() {
         />
       </picture>
 
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(234,246,251,0.84)_0%,rgba(255,255,255,0.72)_34%,rgba(255,255,255,0.22)_60%,rgba(255,255,255,0.68)_100%)] md:bg-[linear-gradient(90deg,rgba(255,255,255,0.90)_0%,rgba(240,250,255,0.76)_30%,rgba(214,242,252,0.34)_58%,rgba(214,242,252,0.08)_80%,rgba(214,242,252,0)_100%)]" />
-      <div className="absolute -right-16 top-12 h-[460px] w-[460px] rounded-full bg-[#8ED8F8]/24 blur-3xl" />
-      <div className="absolute left-[-120px] top-24 h-[360px] w-[360px] rounded-full bg-[#BDEBFF]/22 blur-3xl" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(234,246,251,0.74)_0%,rgba(255,255,255,0.48)_34%,rgba(255,255,255,0.10)_60%,rgba(255,255,255,0.58)_100%)] md:bg-[linear-gradient(90deg,rgba(255,255,255,0.90)_0%,rgba(240,250,255,0.76)_30%,rgba(214,242,252,0.34)_58%,rgba(214,242,252,0.08)_80%,rgba(214,242,252,0)_100%)]" />
+      <div className="absolute -right-16 top-12 h-[460px] w-[460px] rounded-full bg-[#8ED8F8]/22 blur-3xl" />
+      <div className="absolute left-[-120px] top-24 h-[360px] w-[360px] rounded-full bg-[#BDEBFF]/18 blur-3xl" />
       <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white to-transparent" />
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-5rem)] max-w-7xl items-center px-5 py-6 md:px-8 md:py-12 lg:py-16">
-        <div className="max-w-2xl rounded-[2rem] bg-white/58 p-5 shadow-sm ring-1 ring-white/70 backdrop-blur-sm md:bg-transparent md:p-0 md:shadow-none md:ring-0 md:backdrop-blur-0">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/92 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#1677A8] shadow-sm ring-1 ring-[#D7EEF7] backdrop-blur md:px-4 md:py-2 md:text-xs md:tracking-[0.16em]">
+      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-5rem)] max-w-7xl items-start px-5 pb-8 pt-4 md:items-center md:px-8 md:py-12 lg:py-16">
+        <div className="max-w-2xl md:pt-0">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#1677A8] shadow-sm ring-1 ring-[#D7EEF7] backdrop-blur md:px-4 md:py-2 md:text-xs md:tracking-[0.16em]">
             <span className="h-2 w-2 rounded-full bg-[#23A6D5]" />
             Nurse care in Almaty
           </div>
 
-          <h1 className="mt-4 max-w-3xl text-[2.38rem] font-black leading-[0.94] tracking-[-0.065em] text-[#071827] md:mt-7 md:text-7xl lg:text-[5.4rem]">
+          <h1 className="mt-2 max-w-3xl text-[2.38rem] font-black leading-[0.94] tracking-[-0.065em] text-[#071827] md:mt-7 md:text-7xl lg:text-[5.4rem]">
             Уход на дому, как удобный сервис
           </h1>
-          <p className="mt-3 text-sm font-medium text-[#071827]/45 md:mt-4 md:text-base">Ukhod na domu, kak udobnyy servis</p>
-          <p className="mt-4 max-w-xl text-[15px] leading-7 text-[#071827]/68 md:mt-7 md:text-xl md:leading-9">
+          <p className="mt-2 text-sm font-medium text-[#071827]/45 md:mt-4 md:text-base">Ukhod na domu, kak udobnyy servis</p>
+          <p className="mt-3 max-w-xl text-[15px] leading-7 text-[#071827]/68 md:mt-7 md:text-xl md:leading-9">
             Медсестра на дом, Family Care, Corporate Care и Beauty IV. Напишите в WhatsApp или позвоните — мы организуем визит.
           </p>
 
-          <div className="mt-5 flex max-w-xl flex-col gap-2 sm:flex-row md:mt-8 md:gap-3">
+          <div className="mt-16 flex max-w-xl flex-col gap-2 sm:flex-row md:mt-8 md:gap-3">
             <a href={`https://wa.me/${site.whatsapp}`} className="rounded-2xl bg-[#071827] px-6 py-3.5 text-center font-bold text-white shadow-xl transition hover:-translate-y-0.5 md:px-7 md:py-4">
               Написать в WhatsApp
             </a>
