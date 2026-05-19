@@ -4,14 +4,26 @@ const quickServices = ['Укол на дому', 'Перевязка', 'Family C
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white pt-20">
-      <div className="absolute inset-x-0 top-0 h-[72%] bg-gradient-to-b from-[#EAF6FB] to-white" />
-      <div className="relative mx-auto grid max-w-7xl gap-8 px-5 py-10 md:px-8 lg:min-h-[calc(100vh-5rem)] lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:py-16">
-        <div className="relative z-10">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-[#1677A8] shadow-sm ring-1 ring-[#D7EEF7]">
+    <section className="relative min-h-screen overflow-hidden bg-[#071827] pt-20">
+      <picture>
+        <source media="(max-width: 768px)" srcSet={imageFiles.home.mobile} />
+        <img
+          src={imageFiles.home.desktop}
+          alt="Medsestra.kz — nurse care at home in Almaty"
+          className="absolute inset-0 h-full w-full object-cover object-[50%_18%] md:object-[70%_50%] lg:object-right"
+        />
+      </picture>
+
+      <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/72 to-white/8" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white to-transparent" />
+
+      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl items-center px-5 py-12 md:px-8 lg:py-16">
+        <div className="max-w-2xl">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-[#1677A8] shadow-sm ring-1 ring-[#D7EEF7] backdrop-blur">
             <span className="h-2 w-2 rounded-full bg-[#23A6D5]" />
             Nurse care in Almaty
           </div>
+
           <h1 className="mt-7 max-w-3xl text-[3.3rem] font-black leading-[0.92] tracking-[-0.075em] text-[#071827] md:text-7xl lg:text-[5.4rem]">
             Уход на дому, как удобный сервис
           </h1>
@@ -29,27 +41,15 @@ export function Hero() {
             </a>
           </div>
 
-          <div className="mt-8 grid max-w-xl gap-3 rounded-[2rem] bg-white p-3 shadow-xl ring-1 ring-[#E2EEF4] sm:grid-cols-2">
+          <div className="mt-8 grid max-w-xl gap-3 rounded-[2rem] bg-white/92 p-3 shadow-xl ring-1 ring-[#E2EEF4] backdrop-blur sm:grid-cols-2">
             {quickServices.map((service) => (
               <a key={service} href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Здравствуйте, хочу записаться: ${service}`)}`} className="rounded-2xl bg-[#F5FBFE] px-4 py-4 text-sm font-bold text-[#071827] transition hover:bg-[#EAF6FB]">
                 {service}
               </a>
             ))}
           </div>
-        </div>
 
-        <div className="relative z-10">
-          <div className="relative overflow-hidden rounded-[2.4rem] bg-[#F5FBFE] shadow-2xl ring-1 ring-[#DDE8EE]">
-            <picture>
-              <source media="(max-width: 768px)" srcSet={imageFiles.home.mobile} />
-              <img
-                src={imageFiles.home.desktop}
-                alt="Medsestra.kz — nurse care at home in Almaty"
-                className="h-auto w-full object-contain"
-              />
-            </picture>
-          </div>
-          <a href={site.emailHref} className="mt-4 inline-flex rounded-full bg-white px-5 py-3 text-sm font-bold text-[#071827] shadow-sm ring-1 ring-[#DDE8EE]">
+          <a href={site.emailHref} className="mt-4 inline-flex rounded-full bg-white/90 px-5 py-3 text-sm font-bold text-[#071827] shadow-sm ring-1 ring-[#DDE8EE] backdrop-blur">
             {site.email}
           </a>
         </div>
