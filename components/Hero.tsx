@@ -13,8 +13,8 @@ export function Hero() {
       </picture>
 
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(234,246,251,0.74)_0%,rgba(255,255,255,0.48)_34%,rgba(255,255,255,0.10)_60%,rgba(255,255,255,0.58)_100%)] md:bg-[linear-gradient(90deg,rgba(255,255,255,0.90)_0%,rgba(240,250,255,0.76)_30%,rgba(214,242,252,0.34)_58%,rgba(214,242,252,0.08)_80%,rgba(214,242,252,0)_100%)]" />
-      <div className="absolute -right-16 top-12 h-[460px] w-[460px] rounded-full bg-[#8ED8F8]/22 blur-3xl" />
-      <div className="absolute left-[-120px] top-24 h-[360px] w-[360px] rounded-full bg-[#BDEBFF]/18 blur-3xl" />
+      <div className="absolute -right-12 top-10 h-[520px] w-[520px] rounded-full bg-[#8ED8F8]/30 blur-3xl" />
+      <div className="absolute left-[-90px] top-20 h-[420px] w-[420px] rounded-full bg-[#BDEBFF]/24 blur-3xl" />
       <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white to-transparent" />
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-5rem)] max-w-7xl flex-col px-5 pb-8 pt-4 md:flex md:items-center md:px-8 md:py-12 lg:py-16">
@@ -24,7 +24,7 @@ export function Hero() {
             Nurse care in Almaty
           </div>
 
-          <div className="mt-[22svh] md:mt-0">
+          <div className="mt-[14svh] md:mt-0">
             <h1 className="max-w-3xl text-[2.38rem] font-black leading-[0.94] tracking-[-0.065em] text-[#071827] md:mt-7 md:text-7xl lg:text-[5.4rem]">
               Уход на дому, как удобный сервис
             </h1>
