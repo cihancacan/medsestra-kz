@@ -12,7 +12,9 @@ export function Hero() {
         />
       </picture>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-white/92 via-white/58 to-white/0" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.90)_0%,rgba(240,250,255,0.76)_30%,rgba(214,242,252,0.34)_58%,rgba(214,242,252,0.08)_80%,rgba(214,242,252,0)_100%)]" />
+      <div className="absolute -right-16 top-12 h-[460px] w-[460px] rounded-full bg-[#8ED8F8]/28 blur-3xl" />
+      <div className="absolute left-[-120px] top-24 h-[360px] w-[360px] rounded-full bg-[#BDEBFF]/24 blur-3xl" />
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent" />
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl items-center px-5 py-12 md:px-8 lg:py-16">
