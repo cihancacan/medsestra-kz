@@ -7,7 +7,7 @@ const menuItems = [
   { label: 'À propos', href: '/#about', hint: 'Le concept Medsestra.kz' },
   { label: 'Services', href: '/services/', hint: 'Home care, family, corporate, IV' },
   { label: 'Prix', href: '/prices/', hint: 'Tarifs de départ' },
-  { label: 'Contact', href: '/#contact', hint: 'WhatsApp, téléphone, email' }
+  { label: 'Contact', href: '/contact/', hint: 'Réservation, WhatsApp, téléphone' }
 ];
 
 export function Header() {
