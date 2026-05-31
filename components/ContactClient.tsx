@@ -5,9 +5,9 @@ import { site } from '@/lib/content';
 import { contactText, type Lang } from '@/lib/pages-i18n';
 
 const services = {
-  RU: ['Медсестра на дом','Уколы на дому','Капельница на дому','Перевязка на дому','Снятие швов','Забота о родителях','Медсестра в офис','Beauty & Wellness IV','Recovery IV'],
-  KZ: ['Үйге медбике','Үйде укол салу','Үйде тамшылату','Үйде таңу жасау','Тігіс алу','Ата-анаға күтім','Кеңсеге медбике','Beauty & Wellness IV','Recovery IV'],
-  EN: ['Nurse at home','Home injections','IV drip at home','Home dressing','Stitch removal','Family Care','Corporate nurse','Beauty & Wellness IV','Recovery IV']
+  RU: ['Медсестра на дом','Уколы на дому','Капельница на дому','Перевязка на дому','Снятие швов','Семейный уход','Корпоративный уход','Капельницы красоты','Капельница восстановления'],
+  KZ: ['Үйге медбике','Үйде укол салу','Үйде тамшылату','Үйде таңу жасау','Тігіс алу','Отбасылық күтім','Корпоративтік күтім','Сұлулық тамшылары','Қалпына келтіру тамшысы'],
+  EN: ['Nurse at home','Home injections','IV drip at home','Home dressing','Stitch removal','Family care','Corporate care','Beauty IV','Recovery IV']
 };
 
 export function ContactClient() {
