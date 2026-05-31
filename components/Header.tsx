@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { site } from '@/lib/content';
 
+type Lang = 'RU' | 'KZ' | 'EN';
+
 const menuItems = [
   { label: 'О нас', href: '/#about', hint: 'Кто мы и как работаем' },
   { label: 'Услуги', href: '/services/', hint: 'Медсестра на дом, уход, IV' },
@@ -10,19 +12,23 @@ const menuItems = [
   { label: 'Контакты', href: '/contact/', hint: 'Запись, WhatsApp, телефон' }
 ];
 
-const languages = [
-  { code: 'RU', label: 'Русский', href: '#ru' },
-  { code: 'KZ', label: 'Қазақша', href: '#languages' },
-  { code: 'EN', label: 'English', href: '#languages' }
+const languages: Array<{ code: Lang; label: string }> = [
+  { code: 'RU', label: 'Русский' },
+  { code: 'KZ', label: 'Қазақша' },
+  { code: 'EN', label: 'English' }
 ];
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const [currentLang, setCurrentLang] = useState<Lang>('RU');
   const menuRef = useRef<HTMLDivElement | null>(null);
   const langRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    const saved = window.localStorage.getItem('medsestra_lang') as Lang | null;
+    if (saved === 'RU' || saved === 'KZ' || saved === 'EN') setCurrentLang(saved);
+
     function handlePointerDown(event: MouseEvent | TouchEvent) {
       const target = event.target as Node;
       if (menuRef.current && !menuRef.current.contains(target)) setIsOpen(false);
@@ -47,6 +53,13 @@ export function Header() {
     };
   }, []);
 
+  function selectLanguage(language: Lang) {
+    setCurrentLang(language);
+    setIsLangOpen(false);
+    window.localStorage.setItem('medsestra_lang', language);
+    window.dispatchEvent(new CustomEvent('medsestra-language-change', { detail: language }));
+  }
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[#E2EEF4] bg-white/92 backdrop-blur-2xl">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 md:px-8">
@@ -66,47 +79,27 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <div className="relative" ref={langRef}>
-            <button
-              type="button"
-              aria-label="Выбрать язык"
-              aria-expanded={isLangOpen}
-              onClick={() => setIsLangOpen((value) => !value)}
-              className="flex h-11 items-center gap-1.5 rounded-2xl bg-[#F5FBFE] px-3 text-sm font-black text-[#071827] shadow-sm ring-1 ring-[#D7EEF7]"
-            >
+            <button type="button" aria-label="Выбрать язык" aria-expanded={isLangOpen} onClick={() => setIsLangOpen((value) => !value)} className="flex h-11 items-center gap-1.5 rounded-2xl bg-[#F5FBFE] px-3 text-sm font-black text-[#071827] shadow-sm ring-1 ring-[#D7EEF7]">
               <span aria-hidden="true">🌐</span>
-              <span>RU</span>
+              <span>{currentLang}</span>
             </button>
 
             {isLangOpen && (
               <div className="absolute right-0 top-12 z-50 mt-2 w-28 rounded-2xl bg-white p-2 shadow-2xl ring-1 ring-[#DDE8EE]">
                 {languages.map((language) => (
-                  <a
-                    key={language.code}
-                    href={language.href}
-                    onClick={() => setIsLangOpen(false)}
-                    className="flex items-center justify-between rounded-xl px-3 py-2 text-sm font-black text-[#071827] hover:bg-[#F5FBFE]"
-                    title={language.label}
-                  >
+                  <button key={language.code} type="button" onClick={() => selectLanguage(language.code)} className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm font-black text-[#071827] hover:bg-[#F5FBFE]" title={language.label}>
                     <span>{language.code}</span>
                     <span className="text-[#1677A8]">→</span>
-                  </a>
+                  </button>
                 ))}
               </div>
             )}
           </div>
 
-          <a href="/contact/" className="hidden rounded-full bg-[#071827] px-5 py-2.5 text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5 md:block">
-            Записаться
-          </a>
+          <a href="/contact/" className="hidden rounded-full bg-[#071827] px-5 py-2.5 text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5 md:block">Записаться</a>
 
           <div className="relative md:hidden" ref={menuRef}>
-            <button
-              type="button"
-              aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'}
-              aria-expanded={isOpen}
-              onClick={() => setIsOpen((value) => !value)}
-              className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#071827] text-white shadow-lg"
-            >
+            <button type="button" aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'} aria-expanded={isOpen} onClick={() => setIsOpen((value) => !value)} className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#071827] text-white shadow-lg">
               <span className="space-y-1.5">
                 <span className={`block h-0.5 w-5 rounded-full bg-white transition ${isOpen ? 'translate-y-2 rotate-45' : ''}`} />
                 <span className={`block h-0.5 w-5 rounded-full bg-white transition ${isOpen ? 'opacity-0' : ''}`} />
@@ -129,10 +122,7 @@ export function Header() {
                   <div className="grid gap-2 p-3 text-[#071827]">
                     {menuItems.map((item) => (
                       <a key={item.href} className="flex items-center justify-between rounded-[1.35rem] bg-[#F5FBFE] px-4 py-3.5 ring-1 ring-[#E2EEF4]" href={item.href} onClick={() => setIsOpen(false)}>
-                        <span>
-                          <span className="block text-base font-black">{item.label}</span>
-                          <span className="mt-0.5 block text-xs font-semibold text-[#071827]/45">{item.hint}</span>
-                        </span>
+                        <span><span className="block text-base font-black">{item.label}</span><span className="mt-0.5 block text-xs font-semibold text-[#071827]/45">{item.hint}</span></span>
                         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-sm font-black text-[#1677A8] shadow-sm">→</span>
                       </a>
                     ))}
