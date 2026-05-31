@@ -4,16 +4,16 @@ import { useEffect, useRef, useState } from 'react';
 import { site } from '@/lib/content';
 
 const menuItems = [
-  { label: 'À propos', href: '/#about', hint: 'Le concept Medsestra.kz' },
-  { label: 'Services', href: '/services/', hint: 'Soins à domicile, famille, entreprise' },
-  { label: 'Prix', href: '/prices/', hint: 'Tarifs de départ' },
-  { label: 'Contact', href: '/contact/', hint: 'Réservation, WhatsApp, téléphone' }
+  { label: 'О нас', href: '/#about', hint: 'Кто мы и как работаем' },
+  { label: 'Услуги', href: '/services/', hint: 'Медсестра на дом, уход, IV' },
+  { label: 'Цены', href: '/prices/', hint: 'Стартовые тарифы' },
+  { label: 'Контакты', href: '/contact/', hint: 'Запись, WhatsApp, телефон' }
 ];
 
 const languages = [
-  { code: 'RU', label: 'Русский' },
-  { code: 'KZ', label: 'Қазақша' },
-  { code: 'EN', label: 'English' }
+  { code: 'RU', label: 'Русский', href: '#ru' },
+  { code: 'KZ', label: 'Қазақша', href: '#kk' },
+  { code: 'EN', label: 'English', href: '#en' }
 ];
 
 export function Header() {
@@ -23,9 +23,7 @@ export function Header() {
   useEffect(() => {
     function handlePointerDown(event: MouseEvent | TouchEvent) {
       if (!menuRef.current) return;
-      if (!menuRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
+      if (!menuRef.current.contains(event.target as Node)) setIsOpen(false);
     }
 
     function handleEscape(event: KeyboardEvent) {
@@ -72,21 +70,21 @@ export function Header() {
             </button>
             <div className="pointer-events-none absolute right-0 top-12 w-48 translate-y-1 rounded-2xl bg-white p-2 opacity-0 shadow-2xl ring-1 ring-[#DDE8EE] transition group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
               {languages.map((language) => (
-                <div key={language.code} className="rounded-xl px-3 py-2 text-sm font-bold text-[#071827]">
+                <a key={language.code} href={language.href} className="block rounded-xl px-3 py-2 text-sm font-bold text-[#071827] hover:bg-[#F5FBFE]">
                   <span className="mr-2 text-[#1677A8]">{language.code}</span>{language.label}
-                </div>
+                </a>
               ))}
             </div>
           </div>
-          <a href="/client/" className="rounded-full bg-[#071827] px-5 py-2.5 text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5">
-            Accès client
+          <a href="/contact/" className="rounded-full bg-[#071827] px-5 py-2.5 text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5">
+            Записаться
           </a>
         </div>
 
         <div className="relative md:hidden" ref={menuRef}>
           <button
             type="button"
-            aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'}
             aria-expanded={isOpen}
             onClick={() => setIsOpen((value) => !value)}
             className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#071827] text-white shadow-lg"
@@ -100,12 +98,7 @@ export function Header() {
 
           {isOpen && (
             <>
-              <button
-                type="button"
-                aria-label="Fermer le menu"
-                className="fixed inset-0 z-40 cursor-default bg-[#071827]/10 backdrop-blur-[1px]"
-                onClick={() => setIsOpen(false)}
-              />
+              <button type="button" aria-label="Закрыть меню" className="fixed inset-0 z-40 cursor-default bg-[#071827]/10 backdrop-blur-[1px]" onClick={() => setIsOpen(false)} />
 
               <div className="fixed inset-x-4 top-24 z-50 max-h-[calc(100svh-7rem)] overflow-y-auto rounded-[2rem] border border-[#D7EEF7] bg-white shadow-2xl ring-1 ring-[#EAF6FB]">
                 <div className="sticky top-0 z-10 flex items-start justify-between gap-4 bg-gradient-to-br from-[#EAF6FB] via-white to-white p-5">
@@ -115,33 +108,21 @@ export function Header() {
                     <p className="mt-1 text-sm font-semibold text-[#071827]/52">Nurse care in Kazakhstan</p>
                   </div>
 
-                  <button
-                    type="button"
-                    aria-label="Fermer le menu"
-                    onClick={() => setIsOpen(false)}
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white text-2xl font-black leading-none text-[#071827] shadow-sm ring-1 ring-[#DDE8EE]"
-                  >
-                    ×
-                  </button>
+                  <button type="button" aria-label="Закрыть меню" onClick={() => setIsOpen(false)} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white text-2xl font-black leading-none text-[#071827] shadow-sm ring-1 ring-[#DDE8EE]">×</button>
                 </div>
 
                 <div className="mx-3 mt-3 rounded-[1.35rem] bg-[#071827] p-4 text-white">
-                  <p className="text-xs font-black uppercase tracking-[0.2em] text-[#23A6D5]">🌐 Langues</p>
-                  <div className="mt-3 flex flex-wrap gap-2">
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-[#23A6D5]">🌐 Язык страницы</p>
+                  <div className="mt-3 grid grid-cols-3 gap-2">
                     {languages.map((language) => (
-                      <span key={language.code} className="rounded-full bg-white/10 px-3 py-2 text-xs font-black ring-1 ring-white/10">{language.code} · {language.label}</span>
+                      <a key={language.code} href={language.href} onClick={() => setIsOpen(false)} className="rounded-full bg-white/10 px-3 py-2 text-center text-xs font-black ring-1 ring-white/10">{language.code}</a>
                     ))}
                   </div>
                 </div>
 
                 <div className="grid gap-2 p-3 text-[#071827]">
                   {menuItems.map((item) => (
-                    <a
-                      key={item.href}
-                      className="flex items-center justify-between rounded-[1.35rem] bg-[#F5FBFE] px-4 py-3.5 ring-1 ring-[#E2EEF4]"
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                    >
+                    <a key={item.href} className="flex items-center justify-between rounded-[1.35rem] bg-[#F5FBFE] px-4 py-3.5 ring-1 ring-[#E2EEF4]" href={item.href} onClick={() => setIsOpen(false)}>
                       <span>
                         <span className="block text-base font-black">{item.label}</span>
                         <span className="mt-0.5 block text-xs font-semibold text-[#071827]/45">{item.hint}</span>
@@ -152,28 +133,10 @@ export function Header() {
                 </div>
 
                 <div className="grid gap-2 border-t border-[#E2EEF4] bg-white p-3">
-                  <a
-                    className="rounded-[1.35rem] bg-[#071827] px-4 py-4 text-center text-sm font-black text-white shadow-lg"
-                    href="/client/"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Accès client
-                  </a>
+                  <a className="rounded-[1.35rem] bg-[#071827] px-4 py-4 text-center text-sm font-black text-white shadow-lg" href="/contact/" onClick={() => setIsOpen(false)}>Записаться</a>
                   <div className="grid grid-cols-2 gap-2">
-                    <a
-                      className="rounded-[1.25rem] bg-[#EAF6FB] px-3 py-3 text-center text-sm font-black text-[#1677A8]"
-                      href={`https://wa.me/${site.whatsapp}`}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      WhatsApp
-                    </a>
-                    <a
-                      className="rounded-[1.25rem] bg-[#F5FBFE] px-3 py-3 text-center text-sm font-black text-[#071827]"
-                      href={site.phoneHref}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Appeler
-                    </a>
+                    <a className="rounded-[1.25rem] bg-[#EAF6FB] px-3 py-3 text-center text-sm font-black text-[#1677A8]" href={`https://wa.me/${site.whatsapp}`} onClick={() => setIsOpen(false)}>WhatsApp</a>
+                    <a className="rounded-[1.25rem] bg-[#F5FBFE] px-3 py-3 text-center text-sm font-black text-[#071827]" href={site.phoneHref} onClick={() => setIsOpen(false)}>Позвонить</a>
                   </div>
                 </div>
               </div>
