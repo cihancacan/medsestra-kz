@@ -5,9 +5,15 @@ import { site } from '@/lib/content';
 
 const menuItems = [
   { label: 'À propos', href: '/#about', hint: 'Le concept Medsestra.kz' },
-  { label: 'Services', href: '/services/', hint: 'Home care, family, corporate, IV' },
+  { label: 'Services', href: '/services/', hint: 'Soins à domicile, famille, entreprise' },
   { label: 'Prix', href: '/prices/', hint: 'Tarifs de départ' },
   { label: 'Contact', href: '/contact/', hint: 'Réservation, WhatsApp, téléphone' }
+];
+
+const languages = [
+  { code: 'RU', label: 'Русский' },
+  { code: 'KZ', label: 'Қазақша' },
+  { code: 'EN', label: 'English' }
 ];
 
 export function Header() {
@@ -46,7 +52,7 @@ export function Header() {
           <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#071827] text-sm font-black text-white shadow-lg">M</span>
           <span className="leading-tight">
             <span className="block text-xl font-black tracking-[-0.04em] text-[#071827]">Medsestra.kz</span>
-            <span className="hidden text-[11px] font-bold uppercase tracking-[0.18em] text-[#071827]/42 md:block">Nurse care in Almaty</span>
+            <span className="hidden text-[11px] font-bold uppercase tracking-[0.18em] text-[#071827]/42 md:block">Nurse care in Kazakhstan</span>
           </span>
         </a>
 
@@ -57,6 +63,21 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
+          <div className="group relative">
+            <button type="button" className="flex items-center gap-2 rounded-full bg-[#F5FBFE] px-4 py-2.5 text-sm font-black text-[#071827] ring-1 ring-[#D7EEF7]">
+              <span aria-hidden="true">🌐</span>
+              <span>RU</span>
+              <span className="text-[#071827]/35">KZ</span>
+              <span className="text-[#071827]/35">EN</span>
+            </button>
+            <div className="pointer-events-none absolute right-0 top-12 w-48 translate-y-1 rounded-2xl bg-white p-2 opacity-0 shadow-2xl ring-1 ring-[#DDE8EE] transition group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
+              {languages.map((language) => (
+                <div key={language.code} className="rounded-xl px-3 py-2 text-sm font-bold text-[#071827]">
+                  <span className="mr-2 text-[#1677A8]">{language.code}</span>{language.label}
+                </div>
+              ))}
+            </div>
+          </div>
           <a href="/client/" className="rounded-full bg-[#071827] px-5 py-2.5 text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5">
             Accès client
           </a>
@@ -91,7 +112,7 @@ export function Header() {
                   <div>
                     <p className="text-xs font-black uppercase tracking-[0.22em] text-[#1677A8]">Menu</p>
                     <h3 className="mt-2 text-2xl font-black tracking-[-0.05em] text-[#071827]">Medsestra.kz</h3>
-                    <p className="mt-1 text-sm font-semibold text-[#071827]/52">Nurse care in Almaty</p>
+                    <p className="mt-1 text-sm font-semibold text-[#071827]/52">Nurse care in Kazakhstan</p>
                   </div>
 
                   <button
@@ -102,6 +123,15 @@ export function Header() {
                   >
                     ×
                   </button>
+                </div>
+
+                <div className="mx-3 mt-3 rounded-[1.35rem] bg-[#071827] p-4 text-white">
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-[#23A6D5]">🌐 Langues</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {languages.map((language) => (
+                      <span key={language.code} className="rounded-full bg-white/10 px-3 py-2 text-xs font-black ring-1 ring-white/10">{language.code} · {language.label}</span>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="grid gap-2 p-3 text-[#071827]">
