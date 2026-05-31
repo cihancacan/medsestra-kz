@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Header } from '@/components/Header';
-import { LocalizedHome } from '@/components/LocalizedHome';
+import { HomeClient } from '@/components/HomeClient';
 import { site } from '@/lib/content';
 
 export const metadata: Metadata = {
@@ -48,7 +48,7 @@ export default function HomePage() {
       <Header />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      <LocalizedHome />
+      <HomeClient />
     </main>
   );
 }
