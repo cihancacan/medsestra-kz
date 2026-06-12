@@ -68,7 +68,7 @@ export function Header() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[#E2EEF4] bg-white/92 backdrop-blur-2xl">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 md:px-8">
         <a href="/" className="flex items-center gap-3">
-          <span className="flex h-11 w-11 overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-[#D7EEF7]"><img src="/images/favicon.jpg" alt="Medsestra.kz" className="h-full w-full object-cover" /></span>
+          <span className="flex h-11 w-11 overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-[#D7EEF7]"><img src="/images/Logo.icon.png" alt="Medsestra.kz" className="h-full w-full object-cover" /></span>
           <span className="leading-tight"><span className="block text-xl font-black tracking-[-0.04em] text-[#071827]">Medsestra.kz</span><span className="hidden text-[11px] font-bold uppercase tracking-[0.18em] text-[#071827]/42 md:block">{subtitle}</span></span>
         </a>
         <nav className="hidden items-center gap-5 text-sm font-bold text-[#071827]/68 lg:flex">{menuItems.map((item) => <a key={item.href} className="transition hover:text-[#071827]" href={item.href}>{item.label}</a>)}</nav>
