@@ -21,12 +21,29 @@ export function generateMetadata({ params }: Props): Metadata {
   const location = getSeoLocation(params.location);
   if (!service || !location) return {};
   const place = placeName(location);
+  const kzPlace = location.nameKz ?? location.nameRu;
+  const description = `${service.titleRu} ${locationLabel(location)}: аккуратная организация визита, проверенные медсёстры, запись через WhatsApp и поддержка RU/KZ/EN. ${service.shortRu}`;
   return {
     title: `${service.titleRu} ${place} | Medsestra.kz`,
-    description: `${service.titleRu} ${locationLabel(location)}. ${service.shortRu} Проверенные медсёстры, контроль качества, запись через WhatsApp.`,
-    keywords: [`${service.titleRu} ${place}`, `${service.titleRu} ${location.nameRu}`, `${service.titleKz} ${location.nameKz ?? location.nameRu}`, `${service.titleEn} ${place}`, ...service.keywords.map((keyword) => `${keyword} ${location.nameRu}`)],
+    description,
+    keywords: [
+      `${service.titleRu} ${place}`,
+      `${service.titleRu} ${location.nameRu}`,
+      `${service.titleKz} ${kzPlace}`,
+      `${service.titleEn} ${place}`,
+      `${service.titleEn} Almaty`,
+      ...service.keywords.map((keyword) => `${keyword} ${location.nameRu}`)
+    ],
     alternates: { canonical: `/services/${service.slug}/${location.slug}/` },
-    openGraph: { title: `${service.titleRu} ${place} | Medsestra.kz`, description: service.shortRu, url: `/services/${service.slug}/${location.slug}/`, siteName: 'Medsestra.kz', type: 'website' }
+    openGraph: {
+      title: `${service.titleRu} ${place} | Medsestra.kz`,
+      description: `${service.titleRu} в формате премиального ухода: дом, офис, семья, контроль качества и удобная запись через WhatsApp.`,
+      url: `/services/${service.slug}/${location.slug}/`,
+      siteName: 'Medsestra.kz',
+      locale: 'ru_KZ',
+      alternateLocale: ['kk_KZ', 'en_US'],
+      type: 'website'
+    }
   };
 }
 
