@@ -2,6 +2,8 @@
 
 import { useEffect } from 'react';
 
+const CRISP_WEBSITE_ID = '5119c64f-c260-4ff0-9843-bd067de50290';
+
 declare global {
   interface Window {
     $crisp?: unknown[];
@@ -11,11 +13,10 @@ declare global {
 
 export function CrispChat() {
   useEffect(() => {
-    const websiteId = process.env.NEXT_PUBLIC_CRISP_WEBSITE_ID;
-    if (!websiteId || document.getElementById('crisp-chat-script')) return;
+    if (document.getElementById('crisp-chat-script')) return;
 
     window.$crisp = [];
-    window.CRISP_WEBSITE_ID = websiteId;
+    window.CRISP_WEBSITE_ID = CRISP_WEBSITE_ID;
 
     const script = document.createElement('script');
     script.id = 'crisp-chat-script';
