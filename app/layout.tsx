@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { CrispChat } from '@/components/CrispChat';
 import './globals.css';
 
 const BASE_URL = 'https://medsestra-kz.vercel.app';
@@ -26,7 +27,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ru">
-      <body>{children}</body>
+      <body>
+        {children}
+        <CrispChat />
+      </body>
     </html>
   );
 }
