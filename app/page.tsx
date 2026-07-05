@@ -3,9 +3,11 @@ import { Header } from '@/components/Header';
 import { HomeClient } from '@/components/HomeClient';
 import { site } from '@/lib/content';
 
+const BASE_URL = 'https://medsestra-kz.vercel.app';
+
 export const metadata: Metadata = {
   title: 'Medsestra.kz | Медсестра на дом в Алматы | Уколы, капельницы, уход',
-  description: 'Medsestra.kz — медсестра на дом в Алматы: уколы, капельницы, перевязки, снятие швов, Family Care, Corporate Care, Beauty & Wellness IV и Recovery IV. Проверенные медсёстры, контроль качества, запись через WhatsApp.',
+  description: 'Medsestra.kz — медсестра на дом в Алматы: уколы, капельницы, перевязки, снятие швов, семейный уход, корпоративный уход, капельницы красоты и восстановительные процедуры. Проверенные медсёстры, контроль качества, запись через WhatsApp.',
   keywords: ['медсестра на дом Алматы', 'вызвать медсестру на дом Алматы', 'уколы на дому Алматы', 'капельница на дому Алматы', 'перевязка на дому Алматы', 'снятие швов на дому Алматы', 'уход за пожилыми Алматы', 'үйге медбике Алматы', 'nurse at home Almaty'],
   alternates: { canonical: '/' },
   openGraph: {
@@ -27,13 +29,13 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MedicalBusiness',
   name: 'Medsestra.kz',
-  url: 'https://medsestra.kz/',
+  url: `${BASE_URL}/`,
   telephone: site.phone,
   email: site.email,
   areaServed: ['Almaty', 'Almaty Region'],
   medicalSpecialty: ['Nursing', 'HomeHealthCare'],
   availableLanguage: ['ru', 'kk', 'en'],
-  description: 'Медсестра на дом в Алматы: уколы, капельницы, перевязки, снятие швов, Family Care, Corporate Care, Beauty & Wellness IV и Recovery IV.'
+  description: 'Медсестра на дом в Алматы: уколы, капельницы, перевязки, снятие швов, семейный уход, корпоративный уход, капельницы красоты и восстановительные процедуры.'
 };
 
 const faqJsonLd = {
