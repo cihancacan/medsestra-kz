@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+const BASE_URL = 'https://medsestra-kz.vercel.app';
+
 export const metadata: Metadata = {
   title: 'Medsestra.kz — медсестра на дом в Алматы',
   description: 'Medsestra.kz — медсестра на дом в Алматы: уколы, капельницы, перевязки, снятие швов, семейный уход, корпоративный уход и восстановительные процедуры.',
-  metadataBase: new URL('https://medsestra.kz'),
+  metadataBase: new URL(BASE_URL),
   icons: {
     icon: '/images/favicon.jpg',
     shortcut: '/images/favicon.jpg',
@@ -13,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Medsestra.kz',
     description: 'Медсестра на дом, семейный уход, корпоративный уход и восстановительные процедуры в Алматы.',
-    url: 'https://medsestra.kz',
+    url: BASE_URL,
     siteName: 'Medsestra.kz',
     images: ['/images/Home.jpg'],
     locale: 'ru_KZ',
