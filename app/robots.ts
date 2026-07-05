@@ -8,7 +8,10 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/'
     },
-    sitemap: `${BASE_URL}/sitemap.xml`,
-    host: BASE_URL
+    sitemap: [
+      BASE_URL + '/sitemap-main.xml',
+      BASE_URL + '/sitemap.xml'
+    ],
+    host: 'medsestra-kz.vercel.app'
   };
 }
