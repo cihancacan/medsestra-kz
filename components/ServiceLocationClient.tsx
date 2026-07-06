@@ -8,7 +8,8 @@ import { type Lang } from '@/lib/pages-i18n';
 function serviceTitle(service: SeoService, lang: Lang) { if (lang === 'KZ') return service.titleKz; if (lang === 'EN') return service.titleEn; return service.titleRu; }
 function serviceText(service: SeoService, lang: Lang) { if (lang === 'KZ') return service.descriptionKz; if (lang === 'EN') return service.descriptionEn; return service.descriptionRu; }
 function areaName(location: SeoLocation, lang: Lang) { if (lang === 'EN') return location.slug === 'almaty' ? 'Almaty' : location.nameRu; if (lang === 'KZ' && location.nameKz) return location.nameKz; return location.nameRu; }
-function place(location: SeoLocation, lang: Lang) { const name = areaName(location, lang); if (location.type === 'district') return `${name}, Алматы`; if (location.type === 'region') return lang === 'KZ' ? `${name}, Алматы облысы` : lang === 'EN' ? `${name}, Almaty Region` : `${name}, Алматинская область`; return name; }
+function place(location: SeoLocation, lang: Lang) { const name = areaName(location, lang); if (location.type === 'district') return lang === 'EN' ? `${name}, Almaty` : `${name}, Алматы`; if (location.type === 'region') return lang === 'KZ' ? `${name}, Алматы облысы` : lang === 'EN' ? `${name}, Almaty Region` : `${name}, Алматинская область`; return name; }
+function servicePath(service: SeoService, lang: Lang) { return lang === 'EN' && service.aliases?.[0] ? service.aliases[0] : service.slug; }
 
 const ui = {
   RU: { badge: 'Медицинский уход на дому', book: 'Записаться в WhatsApp', steps: 'Как проходит визит', trust: 'Почему Medsestra.kz', trustH: 'Не объявление, а организованный сервис', trustT: 'Medsestra.kz отбирает медсестёр, проверяет документы, контролирует опыт, качество общения и уровень сервиса. У пациента есть понятный контакт до визита, во время визита и после него.', zone: 'Зона обслуживания', other: 'Другие услуги', otherH: 'Выбрать другой уход', near: 'Близкие зоны', nearH: 'Найти услугу рядом' },
@@ -69,13 +70,21 @@ const familyCare = {
   }
 };
 
-export function ServiceLocationClient({ service, location }: { service: SeoService; location: SeoLocation }) {
-  const [lang, setLang] = useState<Lang>('RU');
+type ServiceLocationClientProps = {
+  service: SeoService;
+  location: SeoLocation;
+  initialLang?: Lang;
+  serviceSlug?: string;
+};
+
+export function ServiceLocationClient({ service, location, initialLang = 'RU', serviceSlug }: ServiceLocationClientProps) {
+  const [lang, setLang] = useState<Lang>(initialLang);
   const t = ui[lang];
   const where = place(location, lang);
   const h1 = `${serviceTitle(service, lang)} ${where}`;
   const relatedServices = seoServices.filter((item) => item.slug !== service.slug).slice(0, 6);
   const relatedLocations = seoLocations.filter((item) => item.slug !== location.slug && (item.parentSlug === location.parentSlug || item.parentSlug === 'almaty' || item.slug === 'almaty')).slice(0, 8);
+  const activeServiceSlug = serviceSlug ?? servicePath(service, lang);
   const isFamilyCare = service.slug === 'family-care';
   const fc = familyCare[lang];
 
@@ -94,7 +103,7 @@ export function ServiceLocationClient({ service, location }: { service: SeoServi
     <section className="bg-[#F5FBFE] px-5 py-16 md:px-8 md:py-24"><div className="mx-auto max-w-7xl"><p className="text-sm font-black uppercase tracking-[0.22em] text-[#1677A8]">{t.steps}</p><div className="mt-8 grid gap-5 md:grid-cols-4">{stepText[lang].map(([title, text], index) => <div key={title} className="rounded-[2rem] bg-white p-6 ring-1 ring-[#D7EEF7]"><div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#071827] text-sm font-black text-white">{index + 1}</div><h2 className="text-2xl font-black tracking-[-0.04em]">{title}</h2><p className="mt-4 leading-7 text-[#071827]/62">{text}</p></div>)}</div></div></section>
     <section className="px-5 py-20 md:px-8 md:py-28"><div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]"><div><p className="text-sm font-black uppercase tracking-[0.22em] text-[#1677A8]">{t.trust}</p><h2 className="mt-5 text-4xl font-black leading-[0.98] tracking-[-0.055em] md:text-6xl">{t.trustH}</h2><p className="mt-6 text-lg leading-8 text-[#071827]/62">{t.trustT}</p></div><div className="grid gap-3 md:grid-cols-2">{bulletCards[lang].map((item) => <div key={item} className="rounded-[1.5rem] bg-[#F5FBFE] p-5 font-black text-[#071827] ring-1 ring-[#D7EEF7]">{item}</div>)}</div></div></section>
     <section className="bg-[#071827] px-5 py-20 text-white md:px-8 md:py-28"><div className="mx-auto max-w-7xl"><p className="text-sm font-black uppercase tracking-[0.22em] text-[#23A6D5]">{t.zone}</p><h2 className="mt-5 max-w-4xl text-4xl font-black leading-[0.98] tracking-[-0.055em] md:text-6xl">{h1}</h2><div className="mt-10 flex flex-wrap gap-3">{[where, ...location.nearby].map((item) => <span key={item} className="rounded-full bg-white/10 px-4 py-2 text-sm font-black ring-1 ring-white/10">{item}</span>)}</div></div></section>
-    <section className="bg-[#F5FBFE] px-5 py-20 md:px-8 md:py-28"><div className="mx-auto max-w-7xl"><p className="text-sm font-black uppercase tracking-[0.22em] text-[#1677A8]">{t.other}</p><h2 className="mt-5 text-4xl font-black tracking-[-0.055em] md:text-6xl">{t.otherH}</h2><div className="mt-10 grid gap-4 md:grid-cols-3">{relatedServices.map((item) => <a key={item.slug} href={`/services/${item.slug}/${location.slug}/`} className="rounded-[2rem] bg-white p-6 ring-1 ring-[#D7EEF7]"><h3 className="text-2xl font-black tracking-[-0.04em] text-[#071827]">{serviceTitle(item, lang)}</h3></a>)}</div></div></section>
-    <section className="px-5 py-20 md:px-8 md:py-28"><div className="mx-auto max-w-7xl"><p className="text-sm font-black uppercase tracking-[0.22em] text-[#1677A8]">{t.near}</p><h2 className="mt-5 text-4xl font-black tracking-[-0.055em] md:text-6xl">{t.nearH}</h2><div className="mt-10 grid gap-4 md:grid-cols-4">{relatedLocations.map((item) => <a key={item.slug} href={`/services/${service.slug}/${item.slug}/`} className="rounded-[1.6rem] bg-[#F5FBFE] p-5 ring-1 ring-[#D7EEF7]"><h3 className="text-xl font-black tracking-[-0.03em] text-[#071827]">{place(item, lang)}</h3></a>)}</div></div></section>
+    <section className="bg-[#F5FBFE] px-5 py-20 md:px-8 md:py-28"><div className="mx-auto max-w-7xl"><p className="text-sm font-black uppercase tracking-[0.22em] text-[#1677A8]">{t.other}</p><h2 className="mt-5 text-4xl font-black tracking-[-0.055em] md:text-6xl">{t.otherH}</h2><div className="mt-10 grid gap-4 md:grid-cols-3">{relatedServices.map((item) => <a key={item.slug} href={`/services/${servicePath(item, lang)}/${location.slug}/`} className="rounded-[2rem] bg-white p-6 ring-1 ring-[#D7EEF7]"><h3 className="text-2xl font-black tracking-[-0.04em] text-[#071827]">{serviceTitle(item, lang)}</h3></a>)}</div></div></section>
+    <section className="px-5 py-20 md:px-8 md:py-28"><div className="mx-auto max-w-7xl"><p className="text-sm font-black uppercase tracking-[0.22em] text-[#1677A8]">{t.near}</p><h2 className="mt-5 text-4xl font-black tracking-[-0.055em] md:text-6xl">{t.nearH}</h2><div className="mt-10 grid gap-4 md:grid-cols-4">{relatedLocations.map((item) => <a key={item.slug} href={`/services/${activeServiceSlug}/${item.slug}/`} className="rounded-[1.6rem] bg-[#F5FBFE] p-5 ring-1 ring-[#D7EEF7]"><h3 className="text-xl font-black tracking-[-0.03em] text-[#071827]">{place(item, lang)}</h3></a>)}</div></div></section>
   </>;
 }
