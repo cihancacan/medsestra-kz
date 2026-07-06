@@ -13,14 +13,25 @@ const priorityUrls = [
   '/services/medsestra-na-dom/auezov/',
   '/services/medsestra-na-dom/talgar/',
   '/services/ukoly-na-dom/almaty/',
-  '/services/ukoly-na-dom/medeuskiy/',
   '/services/kapelnitsa-na-dom/almaty/',
-  '/services/kapelnitsa-na-dom/medeuskiy/',
   '/services/perevyazka-na-dom/almaty/',
   '/services/snyatie-shvov-na-dom/almaty/',
+  '/services/nurse-at-home/almaty/',
+  '/services/home-nurse/almaty/',
+  '/services/private-nurse/almaty/',
+  '/services/nurse-at-home/medeuskiy/',
+  '/services/nurse-at-home/bostandyk/',
+  '/services/nurse-at-home/talgar/',
+  '/services/injections-at-home/almaty/',
+  '/services/iv-drip-at-home/almaty/',
+  '/services/wound-dressing-at-home/almaty/',
+  '/services/stitch-removal-at-home/almaty/',
   '/services/family-care/almaty/',
+  '/services/elderly-care-at-home/almaty/',
   '/services/corporate-care/almaty/',
-  '/services/recovery-iv/almaty/'
+  '/services/corporate-nurse/almaty/',
+  '/services/recovery-iv/almaty/',
+  '/services/wellness-iv-at-home/almaty/'
 ];
 
 export function GET() {
