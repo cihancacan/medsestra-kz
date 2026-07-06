@@ -2,6 +2,7 @@ import { imageFiles } from '@/lib/content';
 
 export type SeoService = {
   slug: string;
+  aliases?: string[];
   titleRu: string;
   translitRu: string;
   titleKz: string;
@@ -30,6 +31,7 @@ export type SeoLocation = {
 export const seoServices: SeoService[] = [
   {
     slug: 'medsestra-na-dom',
+    aliases: ['nurse-at-home', 'home-nurse', 'private-nurse', 'nursing-services-at-home'],
     titleRu: 'Медсестра на дом',
     translitRu: 'Medsestra na dom',
     titleKz: 'Үйге медбике шақыру',
@@ -40,11 +42,12 @@ export const seoServices: SeoService[] = [
     descriptionKz: 'Medsestra.kz үй жағдайында медбике қызметін ұйымдастырады: инъекция, таңу, тігісті алу, көрсетілім бойынша тамшылату және тұрақты күтім. Мамандар алдын ала таңдалады, құжаттары тексеріледі және қызмет сапасы бақыланады.',
     descriptionEn: 'Medsestra.kz provides coordinated nurse-at-home care for injections, dressings, stitch removal, IV support when appropriate, regular family care and home visits. Nurses are selected, checked and supervised by the company.',
     image: imageFiles.atHome,
-    keywords: ['медсестра на дом', 'вызвать медсестру на дом', 'домашняя медсестра', 'home nurse', 'үйге медбике'],
+    keywords: ['медсестра на дом', 'вызвать медсестру на дом', 'домашняя медсестра', 'home nurse', 'nurse at home', 'private nurse', 'nursing services at home', 'үйге медбике'],
     bullets: ['Проверенные медсёстры', 'Согласование времени визита', 'Стерильный и аккуратный подход', 'Контроль качества после визита']
   },
   {
     slug: 'ukoly-na-dom',
+    aliases: ['injections-at-home', 'home-injections', 'nurse-for-injections'],
     titleRu: 'Уколы на дому',
     translitRu: 'Ukoly na domu',
     titleKz: 'Үйде укол салу',
@@ -55,11 +58,12 @@ export const seoServices: SeoService[] = [
     descriptionKz: 'Үйде укол салу қызметі дәрігер тағайындаған емді үйден шықпай алуға көмектеседі. Медбике уақытын келісіп келеді, тағайындауды нақтылайды және процедураны мұқият орындайды.',
     descriptionEn: 'Home injections are provided according to a clear medical prescription. A selected nurse arrives at the agreed time, checks the instructions and performs the procedure carefully.',
     image: imageFiles.atHome,
-    keywords: ['уколы на дому', 'сделать укол дома', 'инъекции на дому', 'үйде укол', 'home injections'],
+    keywords: ['уколы на дому', 'сделать укол дома', 'инъекции на дому', 'үйде укол', 'home injections', 'injections at home', 'nurse for injections'],
     bullets: ['По назначению врача', 'Удобно для пожилых родителей', 'Без очередей и дороги', 'Спокойный домашний формат']
   },
   {
     slug: 'kapelnitsa-na-dom',
+    aliases: ['iv-drip-at-home', 'home-iv-drip', 'iv-therapy-at-home', 'vitamin-iv-drip-at-home'],
     titleRu: 'Капельница на дому',
     translitRu: 'Kapelnitsa na domu',
     titleKz: 'Үйде тамшылату',
@@ -70,11 +74,12 @@ export const seoServices: SeoService[] = [
     descriptionKz: 'Үйде тамшылату қызметі пациенттің жағдайы, тағайындау және процедура шарттары нақтыланғаннан кейін ұйымдастырылады. Қауіпсіздік пен стерильдікке ерекше мән беріледі.',
     descriptionEn: 'Home IV drip visits are coordinated after checking the indication, patient situation and procedure conditions. Safety, sterility and clear communication are central.',
     image: imageFiles.atHome,
-    keywords: ['капельница на дому', 'поставить капельницу дома', 'IV drip at home', 'үйде тамшылату'],
+    keywords: ['капельница на дому', 'поставить капельницу дома', 'IV drip at home', 'home IV drip', 'IV therapy at home', 'үйде тамшылату'],
     bullets: ['После уточнения показаний', 'Стерильные материалы', 'Спокойный визит', 'Контроль самочувствия']
   },
   {
     slug: 'perevyazka-na-dom',
+    aliases: ['wound-dressing-at-home', 'home-wound-care', 'post-surgery-dressing-at-home'],
     titleRu: 'Перевязка на дому',
     translitRu: 'Perevyazka na domu',
     titleKz: 'Үйде таңу жасау',
@@ -85,11 +90,12 @@ export const seoServices: SeoService[] = [
     descriptionKz: 'Үйде таңу жасау операциядан, жарақаттан немесе жара емінен кейін қажет болуы мүмкін. Медбике тазалық пен стерильдік талаптарын сақтап, процедураны сабырлы түрде орындайды.',
     descriptionEn: 'Home dressing visits support patients after surgery, procedures, injuries or wound care. The nurse follows a clean, careful and reassuring process.',
     image: imageFiles.atHome,
-    keywords: ['перевязка на дому', 'уход за раной дома', 'wound dressing at home', 'үйде таңу'],
+    keywords: ['перевязка на дому', 'уход за раной дома', 'wound dressing at home', 'home wound care', 'post surgery dressing at home', 'үйде таңу'],
     bullets: ['После операций и процедур', 'Стерильный подход', 'Уход за раной', 'Бережная коммуникация']
   },
   {
     slug: 'snyatie-shvov-na-dom',
+    aliases: ['stitch-removal-at-home', 'suture-removal-at-home', 'remove-stitches-at-home'],
     titleRu: 'Снятие швов на дому',
     translitRu: 'Snyatie shvov na domu',
     titleKz: 'Үйде тігіс алу',
@@ -100,11 +106,12 @@ export const seoServices: SeoService[] = [
     descriptionKz: 'Үйде тігіс алу пациентке клиникаға бару қиын болғанда немесе процедураны тыныш жағдайда өткізгісі келгенде ыңғайлы. Медбике бәрін алдын ала нақтылап, мұқият орындайды.',
     descriptionEn: 'Home stitch removal is convenient after surgery or procedures when clinic travel is difficult. The nurse checks key details and performs the visit carefully.',
     image: imageFiles.atHome,
-    keywords: ['снятие швов на дому', 'снять швы дома', 'stitch removal at home', 'үйде тігіс алу'],
+    keywords: ['снятие швов на дому', 'снять швы дома', 'stitch removal at home', 'suture removal at home', 'remove stitches at home', 'үйде тігіс алу'],
     bullets: ['После операции', 'Уточнение рекомендаций', 'Аккуратное снятие', 'Домашний комфорт']
   },
   {
     slug: 'family-care',
+    aliases: ['elderly-care-at-home', 'care-for-parents-at-home', 'home-care-for-elderly'],
     titleRu: 'Family Care',
     translitRu: 'Zabota o roditelyakh',
     titleKz: 'Ата-анаға күтім',
@@ -115,11 +122,12 @@ export const seoServices: SeoService[] = [
     descriptionKz: 'Family Care — ата-анаға және жасы үлкен жақындарға тұрақты күтім ұйымдастыру. Отбасы визиттен кейін қысқа есеп алып, жақындарының жағдайын бақылауда ұстайды.',
     descriptionEn: 'Family Care provides regular visits and support for parents and elderly relatives. Families receive updates after visits and a reliable care structure.',
     image: imageFiles.family,
-    keywords: ['уход за родителями', 'уход за пожилыми на дому', 'family care', 'elderly care Kazakhstan'],
+    keywords: ['уход за родителями', 'уход за пожилыми на дому', 'family care', 'elderly care Kazakhstan', 'elderly care at home', 'home care for elderly'],
     bullets: ['Регулярные визиты', 'Отчёт семье', 'Сопровождение', 'Приоритетная запись']
   },
   {
     slug: 'corporate-care',
+    aliases: ['corporate-nurse', 'office-nurse', 'corporate-healthcare', 'employee-health-support'],
     titleRu: 'Corporate Care',
     translitRu: 'Korporativnaya medsestra',
     titleKz: 'Кеңседегі медбике',
@@ -130,11 +138,12 @@ export const seoServices: SeoService[] = [
     descriptionKz: 'Corporate Care компанияларға кеңсеге медбике шақыру, wellness күндерін ұйымдастыру және қызметкерлерге қолдау көрсетуге көмектеседі.',
     descriptionEn: 'Corporate Care brings nurse and wellness support to offices, teams and executives. It is designed for companies that want organized, professional care.',
     image: imageFiles.corporate,
-    keywords: ['медсестра в офис', 'корпоративная медсестра', 'corporate nurse', 'office wellness'],
+    keywords: ['медсестра в офис', 'корпоративная медсестра', 'corporate nurse', 'office nurse', 'office wellness', 'employee health support'],
     bullets: ['Выезд в офис', 'Wellness day', 'Для руководителей', 'Корпоративные пакеты']
   },
   {
     slug: 'beauty-wellness-iv',
+    aliases: ['wellness-iv-at-home', 'beauty-iv-drip', 'vitamin-drip-at-home'],
     titleRu: 'Beauty & Wellness IV',
     translitRu: 'Kapelnitsy krasoty',
     titleKz: 'Сұлулық және wellness IV',
@@ -145,11 +154,12 @@ export const seoServices: SeoService[] = [
     descriptionKz: 'Beauty & Wellness IV — энергия, қалпына келу, hydration және glow әсері маңызды клиенттерге арналған бағыт. Қызмет медициналық тәртіппен және мұқият ұйымдастырылады.',
     descriptionEn: 'Beauty & Wellness IV supports energy, hydration, glow and recovery in a premium, medically disciplined service format.',
     image: imageFiles.beauty,
-    keywords: ['капельницы красоты', 'beauty IV', 'wellness IV', 'витаминные капельницы'],
+    keywords: ['капельницы красоты', 'beauty IV', 'wellness IV', 'vitamin drip at home', 'витаминные капельницы'],
     bullets: ['Vitamin IV', 'Hydration', 'Glow Beauty', 'Energy support']
   },
   {
     slug: 'recovery-iv',
+    aliases: ['recovery-iv-at-home', 'hangover-iv-at-home', 'after-party-recovery-iv'],
     titleRu: 'Recovery IV',
     translitRu: 'Vosstanovlenie posle vecherinki',
     titleKz: 'Кештен кейін қалпына келу',
@@ -160,7 +170,7 @@ export const seoServices: SeoService[] = [
     descriptionKz: 'Recovery IV — кештен, ұшудан, шаршаудан немесе қарқынды күн тәртібінен кейін қалпына келуге арналған деликатты wellness форматы.',
     descriptionEn: 'Recovery IV is a discreet wellness recovery format after a party, travel, fatigue or an intense schedule. The tone is calm, private and respectful.',
     image: imageFiles.beauty,
-    keywords: ['капельница от похмелья', 'recovery IV', 'after party recovery', 'восстановление после вечеринки'],
+    keywords: ['капельница от похмелья', 'recovery IV', 'after party recovery', 'hangover IV at home', 'восстановление после вечеринки'],
     bullets: ['Деликатный сервис', 'Без осуждения', 'Удобное время', 'Wellness recovery']
   }
 ];
@@ -186,8 +196,16 @@ export const seoLocations: SeoLocation[] = [
   { slug: 'zhetygen', nameRu: 'Жетыген', nameKz: 'Жетіген', translitKz: 'Zhetigen', type: 'region', parentSlug: 'almaty', nearby: ['Алматинская область', 'Илийский район'] }
 ];
 
+export function getSeoServiceSlugs(service: SeoService) {
+  return [service.slug, ...(service.aliases ?? [])];
+}
+
 export function getSeoService(slug: string) {
-  return seoServices.find((service) => service.slug === slug);
+  return seoServices.find((service) => service.slug === slug || service.aliases?.includes(slug));
+}
+
+export function isEnglishServiceSlug(slug: string, service?: SeoService) {
+  return Boolean(service && slug !== service.slug && service.aliases?.includes(slug));
 }
 
 export function getSeoLocation(slug?: string) {
@@ -200,4 +218,11 @@ export function locationLabel(location?: SeoLocation) {
   if (location.type === 'city') return `в городе ${location.nameRu}`;
   if (location.type === 'district') return `в ${location.nameRu}, Алматы`;
   return `в ${location.nameRu}, Алматинская область`;
+}
+
+export function englishLocationLabel(location?: SeoLocation) {
+  if (!location) return 'Kazakhstan';
+  if (location.slug === 'almaty') return 'Almaty';
+  if (location.type === 'district') return `${location.nameRu}, Almaty`;
+  return `${location.nameRu}, Almaty Region`;
 }
