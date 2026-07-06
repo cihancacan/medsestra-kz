@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { seoLocations, seoServices } from '@/lib/seo-service-data';
+import { getSeoServiceSlugs, seoLocations, seoServices } from '@/lib/seo-service-data';
 
 const BASE_URL = 'https://medsestra-kz.vercel.app';
 
@@ -15,10 +15,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const serviceLocationPages: MetadataRoute.Sitemap = seoServices.flatMap((service) =>
-    seoLocations.map((location) => ({
-      url: `${BASE_URL}/services/${service.slug}/${location.slug}/`,
-      lastModified: now
-    }))
+    getSeoServiceSlugs(service).flatMap((serviceSlug) =>
+      seoLocations.map((location) => ({
+        url: `${BASE_URL}/services/${serviceSlug}/${location.slug}/`,
+        lastModified: now
+      }))
+    )
   );
 
   return [...staticPages, ...serviceLocationPages];
