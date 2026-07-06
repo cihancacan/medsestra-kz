@@ -5,6 +5,46 @@ import { site } from '@/lib/content';
 
 type Lang = 'RU' | 'KZ' | 'EN';
 
+const englishSeoServiceAliases = new Set([
+  'nurse-at-home',
+  'home-nurse',
+  'private-nurse',
+  'nursing-services-at-home',
+  'injections-at-home',
+  'home-injections',
+  'nurse-for-injections',
+  'iv-drip-at-home',
+  'home-iv-drip',
+  'iv-therapy-at-home',
+  'vitamin-iv-drip-at-home',
+  'wound-dressing-at-home',
+  'home-wound-care',
+  'post-surgery-dressing-at-home',
+  'stitch-removal-at-home',
+  'suture-removal-at-home',
+  'remove-stitches-at-home',
+  'elderly-care-at-home',
+  'care-for-parents-at-home',
+  'home-care-for-elderly',
+  'corporate-nurse',
+  'office-nurse',
+  'corporate-healthcare',
+  'employee-health-support',
+  'wellness-iv-at-home',
+  'beauty-iv-drip',
+  'vitamin-drip-at-home',
+  'recovery-iv-at-home',
+  'hangover-iv-at-home',
+  'after-party-recovery-iv'
+]);
+
+function languageFromPath(): Lang | null {
+  if (typeof window === 'undefined') return null;
+  const parts = window.location.pathname.split('/').filter(Boolean);
+  if (parts[0] === 'services' && parts[1] && englishSeoServiceAliases.has(parts[1])) return 'EN';
+  return null;
+}
+
 const menus = {
   RU: [
     { label: 'О нас', href: '/#about', hint: 'Кто мы и как работаем' },
@@ -48,8 +88,15 @@ export function Header() {
   const menuTitle = currentLang === 'RU' ? 'Меню' : currentLang === 'KZ' ? 'Мәзір' : 'Menu';
 
   useEffect(() => {
-    const saved = window.localStorage.getItem('medsestra_lang') as Lang | null;
-    if (saved === 'RU' || saved === 'KZ' || saved === 'EN') setCurrentLang(saved);
+    const forcedLang = languageFromPath();
+    if (forcedLang) {
+      setCurrentLang(forcedLang);
+      window.localStorage.setItem('medsestra_lang', forcedLang);
+      window.dispatchEvent(new CustomEvent('medsestra-language-change', { detail: forcedLang }));
+    } else {
+      const saved = window.localStorage.getItem('medsestra_lang') as Lang | null;
+      if (saved === 'RU' || saved === 'KZ' || saved === 'EN') setCurrentLang(saved);
+    }
     function handleLanguage(event: Event) { const next = (event as CustomEvent<Lang>).detail; if (next === 'RU' || next === 'KZ' || next === 'EN') setCurrentLang(next); }
     function handlePointerDown(event: MouseEvent | TouchEvent) { const target = event.target as Node; if (menuRef.current && !menuRef.current.contains(target)) setIsOpen(false); if (langRef.current && !langRef.current.contains(target)) setIsLangOpen(false); }
     function handleEscape(event: KeyboardEvent) { if (event.key === 'Escape') { setIsOpen(false); setIsLangOpen(false); } }
