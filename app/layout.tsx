@@ -9,7 +9,8 @@ export const metadata: Metadata = {
   description: 'Medsestra.kz — медсестра на дом в Алматы: уколы, капельницы, перевязки, снятие швов, семейный уход, корпоративный уход и восстановительные процедуры.',
   metadataBase: new URL(BASE_URL),
   verification: {
-    google: 'yQ9B_dyoIYHYdM-H1v2eXY497qgIIE_f_XpG_IqXKjQ'
+    google: 'yQ9B_dyoIYHYdM-H1v2eXY497qgIIE_f_XpG_IqXKjQ',
+    yandex: 'e46343509ac40def'
   },
   icons: {
     icon: '/images/favicon.jpg',
