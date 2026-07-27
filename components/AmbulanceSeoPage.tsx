@@ -360,16 +360,19 @@ export function AmbulanceSeoPage({
               <div className="rounded-[1.7rem] bg-white/80 p-4 shadow-sm ring-1 ring-white">
                 <LanguageNav lang={lang} page={page} />
               </div>
-              <div className="mt-5 hidden overflow-hidden rounded-[2rem] bg-white p-2 shadow-2xl ring-1 ring-white lg:block">
-                <img
-                  src="/images/ambulance.kz.jpg"
-                  alt={ambulanceImageAlt[lang]}
-                  width={1254}
-                  height={1254}
-                  loading="eager"
-                  fetchPriority="high"
-                  className="aspect-square w-full rounded-[1.6rem] object-cover"
-                />
+              <div className="mt-5 overflow-hidden rounded-[2rem] bg-white p-2 shadow-2xl ring-1 ring-white">
+                <picture>
+                  <source media="(min-width: 1024px)" srcSet="/images/ambulance.kz.jpg" />
+                  <img
+                    src="/images/ambulance.kz.mb.jpg"
+                    alt={ambulanceImageAlt[lang]}
+                    width={1254}
+                    height={1254}
+                    loading="eager"
+                    fetchPriority="high"
+                    className="aspect-square w-full rounded-[1.6rem] object-cover"
+                  />
+                </picture>
               </div>
             </div>
           </div>
