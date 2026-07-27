@@ -340,41 +340,42 @@ export function AmbulanceSeoPage({
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#EAF6FB] px-5 py-16 md:px-8 md:py-24">
-        <div className="absolute -right-32 -top-40 h-[520px] w-[520px] rounded-full border-[80px] border-white/55" />
-        <div className="absolute -bottom-24 left-[44%] h-64 w-64 rounded-full bg-[#23A6D5]/10 blur-3xl" />
-        <div className="relative mx-auto max-w-7xl">
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
-            <div className="max-w-4xl">
-              <p className="inline-flex rounded-full bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#1677A8] shadow-sm ring-1 ring-[#D7EEF7]">{ui.brand}</p>
-              <h1 className="mt-6 text-5xl font-black leading-[0.94] tracking-[-0.07em] text-[#071827] md:text-7xl">{title}</h1>
-              <p className="mt-7 max-w-3xl text-lg leading-8 text-[#071827]/68 md:text-xl md:leading-9">{lead}</p>
-              {parent && <p className="mt-4 text-sm font-black uppercase tracking-[0.16em] text-[#1677A8]">{parent.names[lang]} · {location?.region[lang]}</p>}
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a href={whatsapp} className="rounded-2xl bg-[#071827] px-7 py-4 text-center font-black text-white shadow-xl">{ui.request}</a>
-                <a href={site.phoneHref} className="rounded-2xl bg-white px-7 py-4 text-center font-black text-[#071827] shadow-sm ring-1 ring-[#DDE8EE]">{ui.call} {site.phone}</a>
-              </div>
-              <p className="mt-5 max-w-3xl text-sm font-semibold leading-6 text-[#071827]/52">{ui.noDiagnosis}</p>
+      <section className="relative overflow-hidden bg-[#EAF6FB]">
+        <picture className="absolute inset-x-0 top-0 block h-[46svh] min-h-[340px] md:inset-0 md:h-full">
+          <source media="(max-width: 767px)" srcSet="/images/ambulance.kz.mb.jpg" />
+          <img
+            src="/images/ambulance.kz.jpg"
+            alt={ambulanceImageAlt[lang]}
+            width={1920}
+            height={1080}
+            loading="eager"
+            fetchPriority="high"
+            className="h-full w-full object-cover object-center md:object-right"
+          />
+        </picture>
+
+        <div className="absolute inset-x-0 top-0 h-[46svh] min-h-[340px] bg-[linear-gradient(180deg,rgba(234,246,251,0.02)_0%,rgba(234,246,251,0.04)_52%,rgba(234,246,251,1)_100%)] md:inset-0 md:h-full md:bg-[linear-gradient(90deg,rgba(255,255,255,0.98)_0%,rgba(245,251,254,0.94)_35%,rgba(234,246,251,0.60)_57%,rgba(234,246,251,0.12)_78%,rgba(234,246,251,0)_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 hidden h-28 bg-gradient-to-t from-white/70 to-transparent md:block" />
+        <div className="absolute -left-28 bottom-12 hidden h-80 w-80 rounded-full bg-[#8ED8F8]/20 blur-3xl md:block" />
+
+        <div className="absolute right-8 top-8 z-20 hidden rounded-[1.7rem] bg-white/88 p-3 shadow-lg ring-1 ring-white backdrop-blur lg:block">
+          <LanguageNav lang={lang} page={page} />
+        </div>
+
+        <div className="relative z-10 mx-auto flex min-h-[860px] max-w-7xl items-end px-5 pb-10 pt-[38svh] md:min-h-[760px] md:items-center md:px-8 md:py-24">
+          <div className="max-w-3xl rounded-[2rem] bg-white/94 p-6 shadow-2xl ring-1 ring-white/90 backdrop-blur-md md:rounded-none md:bg-transparent md:p-0 md:shadow-none md:ring-0 md:backdrop-blur-none">
+            <p className="inline-flex items-center gap-2 rounded-full bg-[#F5FBFE] px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#1677A8] shadow-sm ring-1 ring-[#D7EEF7] md:bg-white/90">
+              <span className="h-2 w-2 rounded-full bg-[#23A6D5]" />
+              {ui.brand}
+            </p>
+            <h1 className="mt-5 text-[2.55rem] font-black leading-[0.94] tracking-[-0.065em] text-[#071827] sm:text-5xl md:mt-6 md:text-7xl">{title}</h1>
+            <p className="mt-5 max-w-2xl text-[15px] leading-7 text-[#071827]/68 md:mt-7 md:text-xl md:leading-9">{lead}</p>
+            {parent && <p className="mt-4 text-sm font-black uppercase tracking-[0.16em] text-[#1677A8]">{parent.names[lang]} · {location?.region[lang]}</p>}
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row md:mt-8">
+              <a href={whatsapp} className="rounded-2xl bg-[#071827] px-7 py-4 text-center font-black text-white shadow-xl transition hover:-translate-y-0.5">{ui.request}</a>
+              <a href={site.phoneHref} className="rounded-2xl bg-white px-7 py-4 text-center font-black text-[#071827] shadow-sm ring-1 ring-[#DDE8EE] transition hover:-translate-y-0.5">{ui.call} {site.phone}</a>
             </div>
-            <div className="shrink-0 lg:w-[min(36vw,430px)]">
-              <div className="rounded-[1.7rem] bg-white/80 p-4 shadow-sm ring-1 ring-white">
-                <LanguageNav lang={lang} page={page} />
-              </div>
-              <div className="mt-5 overflow-hidden rounded-[2rem] bg-white p-2 shadow-2xl ring-1 ring-white">
-                <picture>
-                  <source media="(min-width: 1024px)" srcSet="/images/ambulance.kz.jpg" />
-                  <img
-                    src="/images/ambulance.kz.mb.jpg"
-                    alt={ambulanceImageAlt[lang]}
-                    width={1254}
-                    height={1254}
-                    loading="eager"
-                    fetchPriority="high"
-                    className="aspect-square w-full rounded-[1.6rem] object-cover"
-                  />
-                </picture>
-              </div>
-            </div>
+            <p className="mt-5 max-w-2xl text-xs font-semibold leading-5 text-[#071827]/52 md:text-sm md:leading-6">{ui.noDiagnosis}</p>
           </div>
         </div>
       </section>
