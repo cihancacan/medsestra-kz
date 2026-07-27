@@ -26,6 +26,12 @@ const languageLabels = {
   en: 'English'
 };
 
+const ambulanceImageAlt = {
+  ru: 'Медицинская бригада внутри современной машины скорой помощи',
+  kk: 'Заманауи жедел жәрдем көлігінің ішіндегі медициналық бригада',
+  en: 'Medical team inside a modern ambulance'
+};
+
 const businessServiceIds = new Set([
   'corporate-industrial',
   'insurance-assistance',
@@ -350,8 +356,21 @@ export function AmbulanceSeoPage({
               </div>
               <p className="mt-5 max-w-3xl text-sm font-semibold leading-6 text-[#071827]/52">{ui.noDiagnosis}</p>
             </div>
-            <div className="shrink-0 rounded-[1.7rem] bg-white/80 p-4 shadow-sm ring-1 ring-white">
-              <LanguageNav lang={lang} page={page} />
+            <div className="shrink-0 lg:w-[min(36vw,430px)]">
+              <div className="rounded-[1.7rem] bg-white/80 p-4 shadow-sm ring-1 ring-white">
+                <LanguageNav lang={lang} page={page} />
+              </div>
+              <div className="mt-5 hidden overflow-hidden rounded-[2rem] bg-white p-2 shadow-2xl ring-1 ring-white lg:block">
+                <img
+                  src="/images/ambulance.kz.jpg"
+                  alt={ambulanceImageAlt[lang]}
+                  width={1254}
+                  height={1254}
+                  loading="eager"
+                  fetchPriority="high"
+                  className="aspect-square w-full rounded-[1.6rem] object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
