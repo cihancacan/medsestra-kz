@@ -2,8 +2,7 @@ import type { Metadata } from 'next';
 import { Header } from '@/components/Header';
 import { HomeClient } from '@/components/HomeClient';
 import { site } from '@/lib/content';
-
-const BASE_URL = 'https://medsestra-kz.vercel.app';
+import { SITE_URL } from '@/lib/site-url';
 
 export const metadata: Metadata = {
   title: 'Medsestra.kz | Медсестра на дом в Алматы | Уколы, капельницы, уход',
@@ -34,7 +33,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MedicalBusiness',
   name: 'Medsestra.kz',
-  url: `${BASE_URL}/`,
+  url: `${SITE_URL}/`,
   telephone: site.phone,
   email: site.email,
   areaServed: ['Almaty', 'Almaty Region'],

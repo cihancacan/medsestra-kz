@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
 import { CrispChat } from '@/components/CrispChat';
+import { SITE_URL } from '@/lib/site-url';
 import './globals.css';
-
-const BASE_URL = 'https://medsestra-kz.vercel.app';
 
 export const metadata: Metadata = {
   title: 'Medsestra.kz — медсестра на дом в Алматы',
   description: 'Medsestra.kz — медсестра на дом в Алматы: уколы, капельницы, перевязки, снятие швов, семейный уход, корпоративный уход и восстановительные процедуры.',
-  metadataBase: new URL(BASE_URL),
+  metadataBase: new URL(SITE_URL),
   verification: {
     google: 'yQ9B_dyoIYHYdM-H1v2eXY497qgIIE_f_XpG_IqXKjQ',
     yandex: 'e46343509ac40def'
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Medsestra.kz',
     description: 'Медсестра на дом, семейный уход, корпоративный уход и восстановительные процедуры в Алматы.',
-    url: BASE_URL,
+    url: SITE_URL,
     siteName: 'Medsestra.kz',
     images: ['/images/Home.jpg'],
     locale: 'ru_KZ',
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ru">
+    <html lang="ru" suppressHydrationWarning>
       <body>
         {children}
         <CrispChat />

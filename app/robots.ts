@@ -1,6 +1,5 @@
 import type { MetadataRoute } from 'next';
-
-const BASE_URL = 'https://medsestra-kz.vercel.app';
+import { SITE_URL } from '@/lib/site-url';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -9,9 +8,9 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/'
     },
     sitemap: [
-      BASE_URL + '/sitemap-main.xml',
-      BASE_URL + '/sitemap.xml'
+      SITE_URL + '/sitemap-main.xml',
+      SITE_URL + '/sitemap.xml'
     ],
-    host: 'medsestra-kz.vercel.app'
+    host: 'medsestra.kz'
   };
 }

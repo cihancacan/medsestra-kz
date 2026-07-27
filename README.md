@@ -32,6 +32,26 @@ npm run build
 
 Le dossier généré sera `out/` grâce à `output: 'export'` dans `next.config.mjs`.
 
+## Section ambulances
+
+Les pages ambulances disposent de vraies URL localisées :
+
+- russe : `/ru/skoraya-pomoshch/`
+- kazakh : `/kk/zhedel-zhardem/`
+- anglais : `/en/ambulance/`
+
+Le catalogue couvre les 90 villes et les 25 districts urbains officiels du
+classificateur KATO, ainsi que les principaux microquartiers d'Almaty utilisés
+par le site. Les variantes de mots-clés sont regroupées par intention sur une
+URL canonique afin d'éviter les pages dupliquées.
+
+Pour régénérer le fichier géographique à partir d'une nouvelle version Excel
+du KATO :
+
+```bash
+python scripts/generate-ambulance-locations.py /chemin/vers/KATO.xlsx
+```
+
 ## Déploiement FastPanel
 
 Le workflow GitHub Actions fourni utilise SSH + rsync. Il faut ajouter les secrets GitHub :

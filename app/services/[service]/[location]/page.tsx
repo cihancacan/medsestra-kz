@@ -12,8 +12,7 @@ import {
   seoLocations,
   seoServices
 } from '@/lib/seo-service-data';
-
-const BASE_URL = 'https://medsestra-kz.vercel.app';
+import { SITE_URL } from '@/lib/site-url';
 
 type Props = { params: { service: string; location: string } };
 
@@ -60,7 +59,7 @@ export function generateMetadata({ params }: Props): Metadata {
       openGraph: {
         title: `${service.titleEn} in ${place} | Medsestra.kz`,
         description,
-        url: `${BASE_URL}${canonicalPath}`,
+        url: `${SITE_URL}${canonicalPath}`,
         siteName: 'Medsestra.kz',
         locale: 'en_US',
         alternateLocale: ['ru_KZ', 'kk_KZ'],
@@ -87,7 +86,7 @@ export function generateMetadata({ params }: Props): Metadata {
     openGraph: {
       title: `${service.titleRu} ${place} | Medsestra.kz`,
       description: `${service.titleRu} в формате премиального ухода: дом, офис, семья, контроль качества и удобная запись через WhatsApp.`,
-      url: `${BASE_URL}${canonicalPath}`,
+      url: `${SITE_URL}${canonicalPath}`,
       siteName: 'Medsestra.kz',
       locale: 'ru_KZ',
       alternateLocale: ['kk_KZ', 'en_US'],

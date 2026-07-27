@@ -1,4 +1,10 @@
-const BASE_URL = 'https://medsestra-kz.vercel.app';
+import {
+  ambulanceLanguages,
+  ambulanceServices,
+  getAmbulanceHubUrl,
+  getAmbulanceServiceUrl
+} from '@/lib/ambulance-seo-data';
+import { SITE_URL } from '@/lib/site-url';
 
 const priorityUrls = [
   '/',
@@ -36,8 +42,12 @@ const priorityUrls = [
 
 export function GET() {
   const lastmod = new Date().toISOString().slice(0, 10);
-  const urls = priorityUrls
-    .map((path) => '  <url>\n    <loc>' + BASE_URL + path + '</loc>\n    <lastmod>' + lastmod + '</lastmod>\n  </url>')
+  const ambulancePriorityUrls = ambulanceLanguages.flatMap((lang) => [
+    getAmbulanceHubUrl(lang),
+    ...ambulanceServices.map((service) => getAmbulanceServiceUrl(lang, service))
+  ]);
+  const urls = [...priorityUrls, ...ambulancePriorityUrls]
+    .map((path) => '  <url>\n    <loc>' + SITE_URL + path + '</loc>\n    <lastmod>' + lastmod + '</lastmod>\n  </url>')
     .join('\n');
 
   const xml = '<?xml version="1.0" encoding="UTF-8"?>\n' +

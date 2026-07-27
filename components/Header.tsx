@@ -41,6 +41,9 @@ const englishSeoServiceAliases = new Set([
 function languageFromPath(): Lang | null {
   if (typeof window === 'undefined') return null;
   const parts = window.location.pathname.split('/').filter(Boolean);
+  if (parts[0] === 'ru') return 'RU';
+  if (parts[0] === 'kk') return 'KZ';
+  if (parts[0] === 'en') return 'EN';
   if (parts[0] === 'services' && parts[1] && englishSeoServiceAliases.has(parts[1])) return 'EN';
   return null;
 }
@@ -49,6 +52,7 @@ const menus = {
   RU: [
     { label: 'О нас', href: '/#about', hint: 'Кто мы и как работаем' },
     { label: 'Услуги', href: '/services/', hint: 'Медсестра на дом, уход, капельницы' },
+    { label: 'Скорая помощь', href: '/ru/skoraya-pomoshch/', hint: 'Скорая и медицинская транспортировка' },
     { label: 'Корпоративно', href: '/corporate/', hint: 'Для компаний, кадров и команд' },
     { label: 'Цены', href: '/prices/', hint: 'Стартовые тарифы' },
     { label: 'Контакты', href: '/contact/', hint: 'Запись, WhatsApp, телефон' }
@@ -56,6 +60,7 @@ const menus = {
   KZ: [
     { label: 'Біз туралы', href: '/#about', hint: 'Қалай жұмыс істейміз' },
     { label: 'Қызметтер', href: '/services/', hint: 'Үйге медбике, күтім, тамшылату' },
+    { label: 'Жедел жәрдем', href: '/kk/zhedel-zhardem/', hint: 'Жедел жәрдем және медициналық тасымал' },
     { label: 'Компанияларға', href: '/corporate/', hint: 'Компаниялар, кадрлар және командалар үшін' },
     { label: 'Бағалар', href: '/prices/', hint: 'Бастапқы тарифтер' },
     { label: 'Байланыс', href: '/contact/', hint: 'Жазылу, WhatsApp, телефон' }
@@ -63,6 +68,7 @@ const menus = {
   EN: [
     { label: 'About', href: '/#about', hint: 'Who we are and how we work' },
     { label: 'Services', href: '/services/', hint: 'Nurse at home, care, IV drips' },
+    { label: 'Ambulance', href: '/en/ambulance/', hint: 'Ambulance and medical transport' },
     { label: 'Corporate', href: '/corporate/', hint: 'For companies, executives and teams' },
     { label: 'Prices', href: '/prices/', hint: 'Starting prices' },
     { label: 'Contact', href: '/contact/', hint: 'Booking, WhatsApp, phone' }
@@ -75,10 +81,16 @@ const languages: Array<{ code: Lang; label: string }> = [
   { code: 'EN', label: 'English' }
 ];
 
-export function Header() {
+export function Header({
+  initialLang = 'RU',
+  localizedUrls
+}: {
+  initialLang?: Lang;
+  localizedUrls?: Partial<Record<Lang, string>>;
+} = {}) {
   const [isOpen, setIsOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState<Lang>('RU');
+  const [currentLang, setCurrentLang] = useState<Lang>(initialLang);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const langRef = useRef<HTMLDivElement | null>(null);
   const menuItems = menus[currentLang];
@@ -108,7 +120,12 @@ export function Header() {
   }, []);
 
   function selectLanguage(language: Lang) {
-    setCurrentLang(language); setIsLangOpen(false); window.localStorage.setItem('medsestra_lang', language); window.dispatchEvent(new CustomEvent('medsestra-language-change', { detail: language }));
+    setCurrentLang(language);
+    setIsLangOpen(false);
+    window.localStorage.setItem('medsestra_lang', language);
+    window.dispatchEvent(new CustomEvent('medsestra-language-change', { detail: language }));
+    const target = localizedUrls?.[language];
+    if (target && target !== window.location.pathname) window.location.assign(target);
   }
 
   return (
